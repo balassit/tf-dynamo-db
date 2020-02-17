@@ -1,29 +1,29 @@
 variable "partition_key" {
   description = "The key with which to partition (hash) the data."
-  type        = "string" 
+  type        = "string"
 }
 
 variable "partition_key_type" {
   description = "The type of the partitionKey. Valid values are 'S', 'N', or 'B' for (S)tring, (N)umber or (B)inary data"
-  type        = "string" 
+  type        = "string"
   default     = "S"
 }
 
 variable "range_key" {
   description = "The key with which to partition (hash) the data."
-  type        = "string" 
+  type        = "string"
   default     = ""
 }
 
 variable "range_key_type" {
   description = "The type of the partitionKey. Valid values are 'S', 'N', or 'B' for (S)tring, (N)umber or (B)inary data"
-  type        = "string" 
+  type        = "string"
   default     = "S"
 }
 
 variable "enable_autoscaling" {
   description = "The arn of the IAM role to use for autoscaling"
-  type        = "string" 
+  type        = "string"
   default     = "false"
 }
 
@@ -48,20 +48,20 @@ variable "global_secondary_index_map" {
   #   },
   #   ...
   # ]
-  type        = "list"
-  default     = []
+  type    = "list"
+  default = []
 }
 
 variable "local_secondary_index_map" {
   description = "Additional local secondary indexes in the form of a list of mapped values"
   # See global_secondary_index_map for a similar example (specific fields will vary)
-  type        = "list"
-  default     = []
+  type    = "list"
+  default = []
 }
 
 variable "autoscaling_role_arn" {
   description = "The arn of the IAM role to use for autoscaling"
-  type        = "string" 
+  type        = "string"
   default     = ""
 }
 
@@ -78,13 +78,13 @@ variable "table_name" {
 
 variable "read_capacity" {
   description = "How much read capacity in units to give to the dynamo tables"
-  type        = "string" 
+  type        = "string"
   default     = "10"
 }
 
 variable "write_capacity" {
   description = "How much write capacity in units to give to the dynamo tables"
-  type        = "string" 
+  type        = "string"
   default     = "10"
 }
 

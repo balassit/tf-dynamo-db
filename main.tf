@@ -35,11 +35,11 @@ resource "null_resource" "local_secondary_index_names" {
 }
 
 resource "aws_dynamodb_table" "us_east_1_table" {
-  provider = "aws.us-east-1"
-  hash_key         = "${var.partition_key}"
-  range_key        = "${var.range_key}"
-  billing_mode     = "${var.billing_mode}"
-  name             = "${var.table_name}"
+  provider     = "aws.us-east-1"
+  hash_key     = "${var.partition_key}"
+  range_key    = "${var.range_key}"
+  billing_mode = "${var.billing_mode}"
+  name         = "${var.table_name}"
   point_in_time_recovery {
     enabled = true
   }
@@ -61,11 +61,11 @@ resource "aws_dynamodb_table" "us_east_1_table" {
 }
 
 resource "aws_dynamodb_table" "us_west_2_table" {
-  provider = "aws.us-west-2"
-  hash_key         = "${var.partition_key}"
-  range_key        = "${var.range_key}"
-  billing_mode     = "${var.billing_mode}"
-  name             = "${var.table_name}"
+  provider     = "aws.us-west-2"
+  hash_key     = "${var.partition_key}"
+  range_key    = "${var.range_key}"
+  billing_mode = "${var.billing_mode}"
+  name         = "${var.table_name}"
   point_in_time_recovery {
     enabled = true
   }
@@ -86,15 +86,15 @@ resource "aws_dynamodb_table" "us_west_2_table" {
 }
 
 resource "aws_dynamodb_global_table" "global_table" {
-  provider = "aws.us-east-1"
-  name     = "${var.table_name}"
+  provider   = "aws.us-east-1"
+  name       = "${var.table_name}"
   depends_on = ["aws_dynamodb_table.us_east_1_table", "aws_dynamodb_table.us_west_2_table"]
-  
+
   replica {
     region_name = "us-east-1"
   }
 
   replica {
     region_name = "us-west-2"
-  }  
+  }
 }
